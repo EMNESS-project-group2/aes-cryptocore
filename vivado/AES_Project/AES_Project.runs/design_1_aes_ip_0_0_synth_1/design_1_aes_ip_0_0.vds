@@ -1,0 +1,552 @@
+#-----------------------------------------------------------
+# Vivado v2022.2.2 (64-bit)
+# SW Build 3788238 on Tue Feb 21 19:59:23 MST 2023
+# IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
+# Start of session at: Tue Sep 12 17:49:04 2023
+# Process ID: 16080
+# Current directory: /home/gianluca/AES_Project/AES_Project.runs/design_1_aes_ip_0_0_synth_1
+# Command line: vivado -log design_1_aes_ip_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_aes_ip_0_0.tcl
+# Log file: /home/gianluca/AES_Project/AES_Project.runs/design_1_aes_ip_0_0_synth_1/design_1_aes_ip_0_0.vds
+# Journal file: /home/gianluca/AES_Project/AES_Project.runs/design_1_aes_ip_0_0_synth_1/vivado.jou
+# Running On: gianluca-Yoga-Slim-7-14ARE05, OS: Linux, CPU Frequency: 4164.419 MHz, CPU Physical cores: 8, Host memory: 16092 MB
+#-----------------------------------------------------------
+source design_1_aes_ip_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/gianluca/ip_repo/aes_ip_1_0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/gianluca/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_aes_ip_0_0
+Command: synth_design -top design_1_aes_ip_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 16167
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/home/gianluca/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1970.586 ; gain = 369.801 ; free physical = 2080 ; free virtual = 8696
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2978.078; parent = 1973.559; children = 1004.520
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_aes_ip_0_0' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_aes_ip_0_0/synth/design_1_aes_ip_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'aes_ip_v1_0' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0.v:4]
+INFO: [Synth 8-6157] synthesizing module 'aes_ip_v1_0_S00_AXI' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:3]
+INFO: [Synth 8-226] default block is never used [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:263]
+INFO: [Synth 8-6157] synthesizing module 'aes_128' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/aes_128.v:17]
+INFO: [Synth 8-6157] synthesizing module 'expand_key_128' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/aes_128.v:59]
+INFO: [Synth 8-6157] synthesizing module 'S4' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:32]
+INFO: [Synth 8-6157] synthesizing module 'S' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'S' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'S4' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:32]
+INFO: [Synth 8-6155] done synthesizing module 'expand_key_128' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/aes_128.v:59]
+INFO: [Synth 8-6157] synthesizing module 'one_round' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/round.v:18]
+INFO: [Synth 8-6157] synthesizing module 'table_lookup' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:17]
+INFO: [Synth 8-6157] synthesizing module 'T' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:45]
+INFO: [Synth 8-6157] synthesizing module 'xS' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:326]
+INFO: [Synth 8-6155] done synthesizing module 'xS' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:326]
+INFO: [Synth 8-6155] done synthesizing module 'T' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'table_lookup' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/table.v:17]
+INFO: [Synth 8-6155] done synthesizing module 'one_round' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/round.v:18]
+INFO: [Synth 8-6157] synthesizing module 'final_round' [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/round.v:50]
+INFO: [Synth 8-6155] done synthesizing module 'final_round' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/round.v:50]
+INFO: [Synth 8-6155] done synthesizing module 'aes_128' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/src/aes_128.v:17]
+INFO: [Synth 8-6155] done synthesizing module 'aes_ip_v1_0_S00_AXI' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'aes_ip_v1_0' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_aes_ip_0_0' (0#1) [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_aes_ip_0_0/synth/design_1_aes_ip_0_0.v:53]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg8_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:251]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg9_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:252]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg10_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:253]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg11_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:254]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg12_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:255]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg13_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:256]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg14_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:257]
+WARNING: [Synth 8-6014] Unused sequential element slv_reg15_reg was removed.  [/home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ipshared/ed25/hdl/aes_ip_v1_0_S00_AXI.v:258]
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[2] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[1] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_AWPROT[0] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[2] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[1] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_AXI_ARPROT[0] in module aes_ip_v1_0_S00_AXI is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2049.523 ; gain = 448.738 ; free physical = 2120 ; free virtual = 8738
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3054.047; parent = 2049.527; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2064.367 ; gain = 463.582 ; free physical = 2107 ; free virtual = 8724
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3068.891; parent = 2064.371; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2064.367 ; gain = 463.582 ; free physical = 2106 ; free virtual = 8724
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3068.891; parent = 2064.371; children = 1004.520
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.1 . Memory (MB): peak = 2064.367 ; gain = 0.000 ; free physical = 2210 ; free virtual = 8829
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2225.117 ; gain = 0.000 ; free physical = 1947 ; free virtual = 8566
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.2 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2225.117 ; gain = 0.000 ; free physical = 1934 ; free virtual = 8553
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/home/gianluca/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2225.117 ; gain = 624.332 ; free physical = 2268 ; free virtual = 8892
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3197.625; parent = 2193.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2225.117 ; gain = 624.332 ; free physical = 2264 ; free virtual = 8888
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3197.625; parent = 2193.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2225.117 ; gain = 624.332 ; free physical = 2259 ; free virtual = 8883
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3197.625; parent = 2193.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2225.117 ; gain = 624.332 ; free physical = 2206 ; free virtual = 8845
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1217.957; parent = 1073.974; children = 143.983
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3197.625; parent = 2193.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input    128 Bit         XORs := 1     
+	   2 Input     32 Bit         XORs := 74    
+	   5 Input     32 Bit         XORs := 36    
+	   2 Input      8 Bit         XORs := 154   
++---Registers : 
+	              128 Bit    Registers := 22    
+	               32 Bit    Registers := 49    
+	                8 Bit    Registers := 344   
+	                6 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---ROMs : 
+	                    ROMs := 344   
++---Muxes : 
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 9     
+	  16 Input   32 Bit        Muxes := 8     
+	   2 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port s00_axi_awprot[2] in module design_1_aes_ip_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s00_axi_awprot[1] in module design_1_aes_ip_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s00_axi_awprot[0] in module design_1_aes_ip_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s00_axi_arprot[2] in module design_1_aes_ip_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s00_axi_arprot[1] in module design_1_aes_ip_0_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s00_axi_arprot[0] in module design_1_aes_ip_0_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2225.117 ; gain = 624.332 ; free physical = 1974 ; free virtual = 8626
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1244.053; parent = 1096.299; children = 147.754
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3197.625; parent = 2193.105; children = 1004.520
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-5835] Resources of type BRAM have been overutilized. Used = 344, Available = 280. Will try to implement using LUT-RAM. 
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++---------------+------------------+---------------+----------------+
+|Module Name    | RTL Object       | Depth x Width | Implemented As | 
++---------------+------------------+---------------+----------------+
+|expand_key_128 | S4_0/S_3/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_2/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_1/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_0/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_3/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_2/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_1/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_0/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t0/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t0/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t1/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t1/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t2/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t2/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t3/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t3/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t0/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t0/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t1/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t1/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t2/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t2/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t3/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t1/t3/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t0/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t0/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t1/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t1/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t2/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t2/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t3/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t2/t3/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t0/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t0/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t1/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t1/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t2/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t2/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t3/s0/out_reg | 256x8         | Block RAM      | 
+|one_round      | t3/t3/s4/out_reg | 256x8         | Block RAM      | 
+|one_round      | t0/t2/s0/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_1/S_3/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_1/S_2/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_1/S_1/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_1/S_0/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_2/S_3/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_2/S_2/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_2/S_1/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_2/S_0/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_3/S_3/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_3/S_2/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_3/S_1/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_3/S_0/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_4/S_3/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_4/S_2/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_4/S_1/out_reg | 256x8         | Block RAM      | 
+|final_round    | S4_4/S_0/out_reg | 256x8         | Block RAM      | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_3/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_2/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_1/out     | 256x8         | LUT            | 
+|expand_key_128 | S4_0/S_0/out     | 256x8         | LUT            | 
+|one_round      | t0/t0/s0/out     | 256x8         | LUT            | 
+|one_round      | t0/t0/s4/out     | 256x8         | LUT            | 
+|one_round      | t0/t1/s0/out     | 256x8         | LUT            | 
+|one_round      | t0/t1/s4/out     | 256x8         | LUT            | 
+|one_round      | t0/t2/s4/out     | 256x8         | LUT            | 
+|one_round      | t0/t2/s0/out     | 256x8         | LUT            | 
+|one_round      | t0/t3/s4/out     | 256x8         | LUT            | 
+|one_round      | t0/t3/s0/out     | 256x8         | LUT            | 
+|one_round      | t1/t0/s0/out     | 256x8         | LUT            | 
+|one_round      | t1/t0/s4/out     | 256x8         | LUT            | 
+|one_round      | t1/t1/s0/out     | 256x8         | LUT            | 
+|one_round      | t1/t1/s4/out     | 256x8         | LUT            | 
+|one_round      | t1/t2/s4/out     | 256x8         | LUT            | 
+|one_round      | t1/t2/s0/out     | 256x8         | LUT            | 
+|one_round      | t1/t3/s4/out     | 256x8         | LUT            | 
+|one_round      | t1/t3/s0/out     | 256x8         | LUT            | 
+|one_round      | t2/t0/s0/out     | 256x8         | LUT            | 
+|one_round      | t2/t0/s4/out     | 256x8         | LUT            | 
+|one_round      | t2/t1/s0/out     | 256x8         | LUT            | 
+|one_round      | t2/t1/s4/out     | 256x8         | LUT            | 
+|one_round      | t2/t2/s4/out     | 256x8         | LUT            | 
+|one_round      | t2/t2/s0/out     | 256x8         | LUT            | 
+|one_round      | t2/t3/s4/out     | 256x8         | LUT            | 
+|one_round      | t2/t3/s0/out     | 256x8         | LUT            | 
++---------------+------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:22 ; elapsed = 00:01:25 . Memory (MB): peak = 2252.102 ; gain = 651.316 ; free physical = 5155 ; free virtual = 11799
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1666.410; parent = 1461.816; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3256.625; parent = 2252.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:23 ; elapsed = 00:01:26 . Memory (MB): peak = 2263.102 ; gain = 662.316 ; free physical = 5145 ; free virtual = 11788
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3267.625; parent = 2263.105; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r1/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r2/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r3/t3/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t0/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t1/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t2/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t2/t2/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t3/t0/s0/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/aes_ip_v1_0_S00_AXI_inst/aes1/r4/t3/t0/s4/out_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Common 17-14] Message 'Synth 8-7052' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:25 ; elapsed = 00:01:28 . Memory (MB): peak = 2280.125 ; gain = 679.340 ; free physical = 5149 ; free virtual = 11793
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3284.648; parent = 2280.129; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:28 ; elapsed = 00:01:31 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5151 ; free virtual = 11795
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:28 ; elapsed = 00:01:31 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5151 ; free virtual = 11795
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5148 ; free virtual = 11792
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5148 ; free virtual = 11792
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5147 ; free virtual = 11790
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5147 ; free virtual = 11790
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |LUT1     |    17|
+|2     |LUT2     |  1601|
+|3     |LUT3     |   481|
+|4     |LUT4     |   324|
+|5     |LUT6     |  3026|
+|6     |MUXF7    |   904|
+|7     |MUXF8    |   452|
+|8     |RAMB18E1 |   140|
+|10    |FDRE     |  4721|
+|11    |FDSE     |     1|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:29 ; elapsed = 00:01:33 . Memory (MB): peak = 2286.062 ; gain = 685.277 ; free physical = 5147 ; free virtual = 11790
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1676.129; parent = 1471.535; children = 204.598
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3290.586; parent = 2286.066; children = 1004.520
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:27 ; elapsed = 00:01:30 . Memory (MB): peak = 2286.062 ; gain = 524.527 ; free physical = 5200 ; free virtual = 11844
+Synthesis Optimization Complete : Time (s): cpu = 00:01:29 ; elapsed = 00:01:33 . Memory (MB): peak = 2286.070 ; gain = 685.277 ; free physical = 5200 ; free virtual = 11844
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.2 . Memory (MB): peak = 2286.070 ; gain = 0.000 ; free physical = 5307 ; free virtual = 11951
+INFO: [Netlist 29-17] Analyzing 1496 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2310.074 ; gain = 0.000 ; free physical = 5240 ; free virtual = 11884
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: bdbcab8e
+INFO: [Common 17-83] Releasing license: Synthesis
+147 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:39 ; elapsed = 00:01:39 . Memory (MB): peak = 2310.074 ; gain = 979.734 ; free physical = 5541 ; free virtual = 12184
+INFO: [Common 17-1381] The checkpoint '/home/gianluca/AES_Project/AES_Project.runs/design_1_aes_ip_0_0_synth_1/design_1_aes_ip_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_aes_ip_0_0, cache-ID = b5be599467764a4d
+INFO: [Coretcl 2-1174] Renamed 355 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/gianluca/AES_Project/AES_Project.runs/design_1_aes_ip_0_0_synth_1/design_1_aes_ip_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_aes_ip_0_0_utilization_synth.rpt -pb design_1_aes_ip_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 12 17:50:57 2023...
