@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/gianluca/AES_Project/AES_Project.runs/synth_1/design_1_wrapper.tcl"
+  variable script "/home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.runs/synth_1/design_1_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,8 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
 set_param checkpoint.writeSynthRtdsInDcp 1
+set_param synth.incrementalSynthesisCache ./.Xil/Vivado-6614-pcpucci/incrSyn
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -81,27 +81,25 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /home/gianluca/AES_Project/AES_Project.cache/wt [current_project]
-set_property parent.project_path /home/gianluca/AES_Project/AES_Project.xpr [current_project]
+set_property webtalk.parent_dir /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.cache/wt [current_project]
+set_property parent.project_path /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {/home/gianluca/.Xilinx/Vivado/2022.2.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
-set_property ip_repo_paths /home/gianluca/ip_repo/aes_ip_1_0 [current_project]
+set_property ip_repo_paths /home/riccardo/git/aes-cryptocore/vivado/ip_repo/aes_ip_1_0 [current_project]
 update_ip_catalog
-set_property ip_output_repo /home/gianluca/AES_Project/AES_Project.cache/ip [current_project]
+set_property ip_output_repo /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
-add_files /home/gianluca/AES_Project/AES_Project.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc]
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc]
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/design_1_ooc.xdc]
+read_verilog -library xil_defaultlib /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+add_files /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.srcs/sources_1/bd/design_1/design_1.bd
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc]
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -115,6 +113,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

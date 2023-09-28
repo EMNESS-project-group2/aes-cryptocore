@@ -1,8 +1,8 @@
-Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
----------------------------------------------------------------------------------------------------
-| Tool Version              : Vivado v.2022.2.2 (lin64) Build 3788238 Tue Feb 21 19:59:23 MST 2023
-| Date                      : Tue Sep 12 17:54:15 2023
-| Host                      : gianluca-Yoga-Slim-7-14ARE05 running 64-bit Ubuntu 22.04.3 LTS
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------
+| Tool Version              : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
+| Date                      : Thu Sep 28 17:42:58 2023
+| Host                      : pcpucci running 64-bit Ubuntu 22.04.3 LTS
 | Command                   : report_io -file design_1_wrapper_io_placed.rpt
 | Design                    : design_1_wrapper
 | Device                    : xc7z020
@@ -10,7 +10,7 @@ Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
 | Package                   : clg400
 | Package Version           : FINAL 2012-06-26
 | Package Pin Delay Version : VERS. 2.0 2012-06-26
----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 
 IO Information
 

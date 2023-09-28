@@ -19,4 +19,4 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_ps
 # IP: bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_rst_ps7_0_100M_0 || ORIG_REF_NAME==design_1_rst_ps7_0_100M_0} -quiet] -quiet
 
-# XDC: /home/gianluca/AES_Project/AES_Project.gen/sources_1/bd/design_1/design_1_ooc.xdc
+# XDC: /home/riccardo/git/aes-cryptocore/vivado/AES_Project/AES_Project.gen/sources_1/bd/design_1/design_1_ooc.xdc
