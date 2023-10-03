@@ -1,2 +1,3 @@
 For setting up the board and to write the kernel image and be able to connect remotelly to the board through wifi conection:
 https://pynq.readthedocs.io/en/latest/getting_started/pynq_z2_setup.html
+https://github.com/wutianze/dnndk-pynqz2/blob/master/build-pynqz2-system.md
