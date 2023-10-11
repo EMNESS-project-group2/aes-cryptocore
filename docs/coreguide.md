@@ -12,6 +12,9 @@ The core will be in VHDL or Verilog format. Both the HDL formats will work corre
 
 ### Second step: VIVADO
 
+We use vivado to create the IP, including the core we need. <br>
+
+
 ![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2015-58-35.png)
 
 ```
