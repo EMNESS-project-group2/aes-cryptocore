@@ -20,10 +20,17 @@ Then, clicking on `Finish`, the project is created.
 
 From the `Tools` menu, click on `Create and package new IP`, then `Create AXI4 Peripheral`<br>
 Pay attention to set `light` as interface type. <br>
+In this phase is important to specify the total number of registers needed in the IP (considering they have 32 bit, so signals with higher parallelism will take more than one register).<br>
+Each register will create an address (made by an offset with respect to a common base address) and each of these will be used only for an input or an output. The same address can't be used for more than one signal.<br>
 
 After having created the IP, click on the `Edit IP` choice. <br>
 Then from the `Sources` panel click on the `+` and add the HDL files for the core. <br>
 The core will be instantiated using these files as a component. <br>
+
+For interfacing properly the core through the AXI4 interface, it has to be instantiated and the ports have to be connected to the signals of the AXI4 that can be used as input/output. It can be done by writing HDL code into the verilog file of the IP (the file which name terminates with `...SOO_AXI.vhd/.v`)
+
+![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-10-11%2018-32-43.png)
+
 
 
 ![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2015-58-35.png)
