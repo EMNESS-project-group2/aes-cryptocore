@@ -6,13 +6,24 @@ Licensed under CC-BY-4.0
 ### First step: download the core
 
 Download the requested core from http://opencores.org <br>
-It's mandatory to be registered with a student profile in order to be able to download. The confirmation of the registration could take some days. 
+It's mandatory to be registered with a student account in order to be able to download. The confirmation of the registration could take some days. 
 
 The core will be in VHDL or Verilog format. Both the HDL formats will work correctly with the following parts of the task.
 
 ### Second step: VIVADO
 
 We use vivado to create the IP, including the core we need. <br>
+Vivado > Create new Project > RTL project<br>
+Then we choose the board, which is the Pynq-Z2.<br>
+**NOTE:** the board package needs to be included during the installation process of Vivado <br>
+Then, clicking on `Finish`, the project is created.
+
+From the `Tools` menu, click on `Create and package new IP`, then `Create AXI4 Peripheral`<br>
+Pay attention to set `light` as interface type. <br>
+
+After having created the IP, click on the `Edit IP` choice. <br>
+Then from the `Sources` panel click on the `+` and add the HDL files for the core. <br>
+The core will be instantiated using these files as a component. <br>
 
 
 ![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2015-58-35.png)
