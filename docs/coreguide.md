@@ -48,6 +48,10 @@ It's important to verify from the schematics that all the connections have corre
 
 ![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2016-50-48.png)
 
+At this point, if everything corresponds to what is expected, click on the `Package IP - <name>` panel, and proceed clicking on `File Groups` -> `Merge changes from File Groups Wizard`.
+
+Now click on `Review and Package` -> `Re-Package IP`
+
 ```
 code
 codkfdxfnjsekrnf
