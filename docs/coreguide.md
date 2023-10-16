@@ -48,14 +48,20 @@ It's important to verify from the schematics that all the connections have corre
 
 ![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2016-50-48.png)
 
+### Review, package, block design, wrapper
+
 At this point, if everything corresponds to what is expected, click on the `Package IP - <name>` panel, and proceed clicking on `File Groups` -> `Merge changes from File Groups Wizard`.
 
 Now click on `Review and Package` -> `Re-Package IP`
 
 After having confirmed to close the project by clicking on `Yes`, next step is to create the block design <br>
 On the left menu: `Create block design`, the specify a name and click `OK`. <br>
-Now add the IP by clicking on the `+` symbol in the `Diagram` panel, and then selecting the board. <br>
+Now add the board processing system by clicking on the `+` symbol in the `Diagram` panel, and then selecting the board. <br>
 Click on `Run Block Automation`, then confirm with `OK`.<br>
+Then add the custom IP made in the previous steps by clicking again on the `+` symbol, then `Run Connection Automation` and `OK` in the window that will appear. <br>
+Now validateby clicking on the blue check mark `✓` in `Diagram` panel, click `OK`.
+
+Now it's time to create the wrapper to be exported
 
 ```
 code
