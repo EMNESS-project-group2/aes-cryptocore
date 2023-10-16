@@ -52,6 +52,11 @@ At this point, if everything corresponds to what is expected, click on the `Pack
 
 Now click on `Review and Package` -> `Re-Package IP`
 
+After having confirmed to close the project by clicking on `Yes`, next step is to create the block design <br>
+On the left menu: `Create block design`, the specify a name and click `OK`. <br>
+Now add the IP by clicking on the `+` symbol in the `Diagram` panel, and then selecting the board. <br>
+Click on `Run Block Automation`, then confirm with `OK`.<br>
+
 ```
 code
 codkfdxfnjsekrnf
