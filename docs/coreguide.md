@@ -61,10 +61,19 @@ Click on `Run Block Automation`, then confirm with `OK`.<br>
 Then add the custom IP made in the previous steps by clicking again on the `+` symbol, then `Run Connection Automation` and `OK` in the window that will appear. <br>
 Now validateby clicking on the blue check mark `✓` in `Diagram` panel, click `OK`.
 
-Now it's time to create the wrapper to be exported
+Now it's time to create the wrapper that will be exported: <br>
+right click on the core name under the `Design Sources` section -> `Create HDL Wrapper` -> `Let Vivado manage wrapper and auto-update`. <br>
 
-```
-code
-codkfdxfnjsekrnf
-```
+Now the wrapper should appear in the Design Sources in the `Sources` panel.
+
+Then on the left menu: `Generate Bitstream`, and `OK` in "Launch Runs" window.
+
+Now `File` > `Export` > `Export Hardware` <br>
+In the window "Export Hardware Platform" : <br>
+`Include bitstream`, give the file name for the XSA and a path where to be exported. <br>
+`Finish`.
+
+## Third step: VITIS
+
+
 
