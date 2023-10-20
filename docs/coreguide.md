@@ -75,5 +75,13 @@ In the window "Export Hardware Platform" : <br>
 
 ## Third step: VITIS
 
+Open Vitis <br>
+`Create Application Project` -> `Next` -> `Create a new platform from hardware (XSA)` <br>
+Here click on `Browse...` and select the wrapper file (.xsa) . Verify the platform name and proceed with `Next`. <br>
+Select the `ps7_cortexa9_0`, then `Next`. <br>
+In "select a domain" click on `Create new`, and in "Operating System" option select `standalone` <br>
+`Next` -> select `HelloWorld` -> `Finish` <br>
+
+Now the project is ready for adding some user code
 
 
