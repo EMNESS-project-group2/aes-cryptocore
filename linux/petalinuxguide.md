@@ -7,30 +7,32 @@
      [PetaLinux Download](https://www.xilinx.com/member/forms/download/xef.html?filename=petalinux-v2023.1-05012318-installer.run)
 
 2. **Installation Steps:**
-   - First of all, make sure you have the latest version of the OS.
-   ```
-     sudo apt update
-     ```
-   After:
-    ```
-     sudo apt upgrade
-     ```
-   - Then, after downloading, move the `.run` file to the desired installation folder.
 
-   - Open your terminal and navigate to the installation folder.
+First of all, make sure you have the latest version of the OS.
 
-   - Run the installer using the following command:
-     ```bash
-     bash petalinux-v2023.1-05012318-installer.run
-     ```
-   - If an Error comes out saying you are missing some packages, run the following command:
-   ```
-     sudo apt install gawq zlib1g-dev net-tools xterm autoconf libtool texinfo gcc-multilib 
-     ```
+```bash
+  sudo apt update
+```
+After:
+ ```bash
+  sudo apt upgrade
+```
+- Then, after downloading, move the `.run` file to the desired installation folder.
+- Open your terminal and navigate to the installation folder.
+- Run the installer using the following command:
+```bash
+  bash petalinux-v2023.1-05012318-installer.run
+```
 
-   - Follow the on-screen prompts to accept the license agreements and complete the installation.
+- If an Error comes out saying you are missing some packages, run the following command:
+```bash
+  sudo apt install gawk zlib1g-dev net-tools xterm autoconf libtool texinfo gcc-multilib 
+```
+Maybe they aren't all the packages missing. If is that the case, check the error messages and search on google how to download that specific library by terminal. You will easily find a command to do it
 
-   - Run the settings.sh script `source ./settings.sh` (ignore the warning)
+- Follow the on-screen prompts to accept the license agreements and complete the installation.
+
+- Run the settings.sh script `source ./settings.sh` (ignore the warning)
 
 ## Generating BSP Files and Linux Kernel
 
@@ -62,17 +64,20 @@ Since its an specification of the project, we  will create the project from scra
    ```
 4. Open the `base.tcl` script and change `scripts_vivado_version` variable to your Vivado version, for us it was 2022.2
 5. Run `make` and wait until you get the message "build finished succesfully", go grab a coffee in the meanwhile, it takes some time.
-```bash
-   make
-   ```
+
+
+
 We have to write here how we created the BSP using petaLinux
 
 After, creating a new project from a BSP is the simplest way to get started with PetaLinux, since it provides you with an already functioning and bootable Linux image that you start playing with.
 1. Go to your terminal and change directory to where you would like to create your new PetaLinux project directory and enter the following command.
-2. Run:  
+2. Run:
+
 ```bash
-petalinux-create -t project -s <bsp_path> --name OperatingSystemProject
+petalinux-create -t project -s <bsp_path> --name 
+OperatingSystemProject
 ```
+
 Here '-t' is equivalent to '--type' and '-s' is for source (has to be followed by the absolute path to the BSP we just created in the previous step). (i.e home/ric/PYNQ-Z2/pynq_z2.bsp).
 
 1. Move to the newly created directory:
@@ -93,3 +98,79 @@ STEP6: RUN COMMAND
 STEP7: USB SUPPORT AS TUTORIAL
 STEP8: build
  
+....
+...
+..
+tutte cose
+...
+...
+
+
+ ```bash
+ petalinux-build
+ ```
+
+ ## Creating and Compiling the driver
+
+ ```bash
+ petalinux-create -t modules --name aes-core-driver --enable
+ ```
+
+ You can edit the file
+
+ ```bash
+ $(PETAPROJECT)/project-spec/meta-user/recipes-modules/aes-core-driver/files/aes-core-driver.c
+ ```
+
+ Once you are done you can build it with petalinux
+
+ ```bash
+ petalinux-build -c aes-core-driver
+ ```
+
+ If everything works, you can build the images by giving as input the hw_platform you have created before
+
+ ```bash
+ petalinux-package --boot --fsbl $(PETAPROJECT)/images/linux/zynq_fsbl.elf --fpga $(VIVADO-HW-PATH)/hw_platform_300923/hw_platform/hw_platform.runs/impl_1/hw_platform_wrapper.bit --uboot --force
+ ```
+
+ Check if the driver is present in the rootfs
+
+ ```bash
+ petalinux-config -c rootfs
+
+ # Go to user packages -> aes-core-driver and enable it
+ ```
+
+Finally
+
+```bash
+petalinux-build
+```
+
+## Booting from SD
+
+First, you have to format and partition the SD card. You can do it by using the following guide:
+
+https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide/Partitioning-and-Formatting-an-SD-Card
+
+Once you have done it, you will have two partitions:
+1. BOOT
+2. RootFS
+
+You have already mounted the devices in you pc. If you don't know where the mount is located, you can do right-click on the GUI folder and hit "Open in the terminal". From there you can check the location of your two partitions.
+
+1. Copy the following files from <PETAPROJECT>/images/linux in /BOOT/
+   1. BOOT.BIN
+   2. image.ub
+   3. boot.scr
+2. Exctract the rootfs.tar.gz folder into the RootFS folder
+```bash
+cd $(YourMountedLocation)/RootFS/
+
+tar -xzvf $(PETAPROJECT)/images/linux/rootfs.tar.gz
+```
+
+You can eject the SD and put into the board, you're ready to go!
+
+
