@@ -1,4 +1,4 @@
-obj-m := driver.o
+obj-m := aes-core-driver.o
 
 MY_CFLAGS += -g -DDEBUG
 ccflags-y += ${MY_CFLAGS}

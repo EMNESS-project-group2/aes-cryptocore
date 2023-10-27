@@ -1,4 +1,4 @@
-SUMMARY = "Recipe for  build an external driver Linux kernel module"
+SUMMARY = "Recipe for  build an external aes-core-driver Linux kernel module"
 SECTION = "PETALINUX/modules"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
@@ -8,7 +8,7 @@ inherit module
 INHIBIT_PACKAGE_STRIP = "1"
 
 SRC_URI = "file://Makefile \
-           file://driver.c \
+           file://aes-core-driver.c \
 	   file://COPYING \
           "
 
