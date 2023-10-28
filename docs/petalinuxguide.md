@@ -28,7 +28,7 @@ After:
 ```bash
   sudo apt install gawk zlib1g-dev net-tools xterm autoconf libtool texinfo gcc-multilib 
 ```
-Maybe they aren't all the packages missing. If is that the case, check the error messages and search on google how to download that specific library by terminal. You will easily find a command to do it
+Maybe they aren't all the packages missing. If is that the case, check the error messages and search on google how to download that specific library by terminal. You will easily find a command to do it.
 
 - Follow the on-screen prompts to accept the license agreements and complete the installation.
 
@@ -48,7 +48,7 @@ Since our board vendor does not provide BSP files, you can use PetaLinux to gene
    -  Create a PetaLinux project from scratch to build the entire Linux system, including the kernel, device tree, and root filesystem, customized for our hardware. This approach provides full control and customization but requires more setup and configuration compared to using a precompiled image.
 
 
-Since its an specification of the project, we  will create the project from scratch. We found the git repository of Xilinx which has all the needed files and scripts to generate the required BSP which we will then be used on PetaLinux.
+Since its a specification of the project, we  will create the project from scratch. We found the git repository of Xilinx which has all the needed files and scripts to generate the required BSP which we will then be used on PetaLinux.
 **Creating BSP and creating the PetaLinux project**
 1. Clone the pynq project repo to your PC:
    ```bash
@@ -110,43 +110,65 @@ tutte cose
  petalinux-build
  ```
 
- ## Creating and Compiling the driver
+## Creating and Compiling the driver
 
- ```bash
- petalinux-create -t modules --name aes-core-driver --enable
- ```
+In order to cross-compile the driver for the cripto-core easily, we will use the petalinux's recipes and buildtools. The skeleton of the driver that will contain your custom code can be created by terminal
 
- You can edit the file
+```bash
+petalinux-create -t modules --name aes-core-driver --enable
+```
+There you can customize the init, write, read, open, close functions to your needs. The file is in
 
- ```bash
- $(PETAPROJECT)/project-spec/meta-user/recipes-modules/aes-core-driver/files/aes-core-driver.c
- ```
 
- Once you are done you can build it with petalinux
+```bash
+$(PETAPROJECT)/project-spec/meta-user/recipes-modules/aes-core-driver/files/aes-core-driver.c
+```
 
- ```bash
- petalinux-build -c aes-core-driver
- ```
+Once you are done you can build it with petalinux
 
- If everything works, you can build the images by giving as input the hw_platform you have created before
+```bash
+petalinux-build -c aes-core-driver
+```
 
- ```bash
- petalinux-package --boot --fsbl $(PETAPROJECT)/images/linux/zynq_fsbl.elf --fpga $(VIVADO-HW-PATH)/hw_platform_300923/hw_platform/hw_platform.runs/impl_1/hw_platform_wrapper.bit --uboot --force
- ```
+You can also create an application that tests your driver. 
 
- Check if the driver is present in the rootfs
+```bash
+petalinux-create -t apps --template c --name aes-core-test --enable
+```
 
- ```bash
- petalinux-config -c rootfs
+There you can customize the C file to your testing needs. The file is in
 
- # Go to user packages -> aes-core-driver and enable it
- ```
+
+```bash
+$(PETAPROJECT)/project-spec/meta-user/recipes-apps/aes-core-test/files/aes-core-test.c
+```
+Once you are done you can build it with petalinux
+
+```bash
+petalinux-build -c aes-core-test
+```
+
+If everything works, you can build the images by giving as input the hw_platform you have created before
+
+```bash
+petalinux-package --boot --fsbl $(PETAPROJECT)/images/linux/zynq_fsbl.elf --fpga $(VIVADO-HW-PATH)/hw_platform_300923/hw_platform/hw_platform.runs/impl_1/hw_platform_wrapper.bit --uboot --force
+```
+
+Enable the driver and the test in the configuration
+
+```bash
+petalinux-config -c rootfs
+
+# Go to user packages -> aes-core-driver and enable it
+```
+
 
 Finally
 
 ```bash
 petalinux-build
 ```
+
 
 ## Booting from SD
 
@@ -172,10 +194,3 @@ tar -xzvf $(PETAPROJECT)/images/linux/rootfs.tar.gz
 ```
 
 You can eject the SD and put into the board, you're ready to go!
-
-
-# insert test
-
- ```bash
- petalinux-create -t apps --name test_driver --enable
- ```

@@ -6,7 +6,7 @@ Licensed under CC-BY-4.0
 ## First step: download the core
 
 Download the requested core from http://opencores.org <br>
-It's mandatory to be registered with a student account in order to be able to download. The confirmation of the registration could take some days. 
+It's mandatory to be registered with a student account in order to be able to download it. The confirmation of the registration could take some days. 
 
 The core will be in VHDL or Verilog format. Both the HDL formats will work correctly with the following parts of the task.
 
@@ -14,8 +14,11 @@ The core will be in VHDL or Verilog format. Both the HDL formats will work corre
 
 ### Project and IP creation
 
-We use vivado to create the IP, including the core we need. <br>
-Vivado > Create new Project > RTL project<br>
+We will use vivado to create the IP, including the core we need. <br>
+
+Create a Vivado Project.
+
+Create new Project -> RTL project<br>
 Then we choose the board, which is the Pynq-Z2.<br>
 **NOTE:** the board package needs to be included during the installation process of Vivado <br>
 Then, clicking on `Finish`, the project is created.

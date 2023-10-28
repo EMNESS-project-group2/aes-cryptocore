@@ -1,4 +1,6 @@
-Download from there the pynq-z2 board files:
+# Board package on Vivado
+
+In order to work on the Pynq-Z2, download from there the board files:
 
 https://www.tulembedded.com/FPGA/ProductsPYNQ-Z2.html#:~:text=Z2%20Board%20File
 
