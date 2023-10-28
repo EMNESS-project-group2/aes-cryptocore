@@ -33,22 +33,22 @@
 #include <linux/uaccess.h>          // Required for the copy to user function
 
 
-#define BASE_ADDR 			0x43C00000U
+#define BASE_ADDR 			(0x43C00000U)
 
-#define OFFSET_STATUS_0 	0x00U 
-#define OFFSET_STATUS_1 	0x04U
-#define OFFSET_STATUS_2 	0x08U
-#define OFFSET_STATUS_3 	0x0CU
+#define OFFSET_STATUS_0 	(0x00000000U) 
+#define OFFSET_STATUS_1 	(0x00000004U)
+#define OFFSET_STATUS_2 	(0x00000008U)
+#define OFFSET_STATUS_3 	(0x0000000CU)
 
-#define OFFSET_KEY_0    	0x10U
-#define OFFSET_KEY_1    	0x14U
-#define OFFSET_KEY_2    	0x18U
-#define OFFSET_KEY_3    	0x1CU
+#define OFFSET_KEY_0    	(0x00000010U)
+#define OFFSET_KEY_1    	(0x00000014U)
+#define OFFSET_KEY_2    	(0x00000018U)
+#define OFFSET_KEY_3    	(0x0000001CU)
 
-#define OFFSET_OUTPUT_0 	0x20U
-#define OFFSET_OUTPUT_1 	0x24U
-#define OFFSET_OUTPUT_2 	0x28U
-#define OFFSET_OUTPUT_3 	0x02U
+#define OFFSET_OUTPUT_0 	(0x00000020U)
+#define OFFSET_OUTPUT_1 	(0x00000024U)
+#define OFFSET_OUTPUT_2 	(0x00000028U)
+#define OFFSET_OUTPUT_3 	(0x00000002U)
 
 #define DEST_ADDR(x,y)      (uint8_t*)((uint8_t)(x) + (uint8_t)(y))
 
@@ -72,19 +72,8 @@ static struct device *ourdev;
 
 
 /** ptrs to the I/O regs */
-//static void __iomem* vi_baddr = NULL;
 static uint8_t local_buf   = 0U;
 static uint8_t *vi_baddr   = NULL;
-//volatile unsigned int *reg_in;
-//volatile unsigned int *reg_key;
-//volatile unsigned int *reg_out;
-//
-//
-//static int in0 = 0;
-//static int in1 = 0;
-//static int in2 = 0;
-//static int in3 = 0;
-
 
 
 
@@ -110,9 +99,6 @@ static int dev_close(struct inode *inod, struct file *fil);
 static ssize_t dev_read(struct file *fp, char *buf, size_t len, loff_t *off);
 static ssize_t dev_write(struct file *fp, const char *user_buf, size_t len, loff_t *off);
 
-//static int write_input(const char* in, int offset);
-//static int read_result(int offset);
-
 
 static struct file_operations fops = {
     .read    = dev_read,
@@ -120,6 +106,85 @@ static struct file_operations fops = {
     .open    = dev_open,
 	.release = dev_close, 
 };
+
+
+static int __init aes_core_driver_init(void)
+{
+	printk("<1>AES CRYPTO-CORE DEVICE DRIVER INIT\n");
+	printk("<1>Module parameters were (0x%08x) and \"%s\"\n", myint,
+	       mystr);
+
+	
+	vi_baddr = ioremap(BASE_ADDR, 0xFFFFU);
+
+	printk("Virtual base address mapped\n");
+
+	return platform_driver_register(&aes_core_driver_driver);
+}
+
+
+static ssize_t dev_read
+(
+	struct file *fil, 
+	char *buf, 
+	size_t len, 
+	loff_t *off
+)
+{
+	uint8_t err = 0U;
+
+	printk(KERN_ALERT "Device starting to read");
+
+	local_buf = *(uint8_t*)DEST_ADDR(vi_baddr + *off);
+	
+	err = copy_to_user(buf, &local_buf, sizeof(buf));
+	if (err != 0U)
+	{
+		printk(KERN_ALERT "ERROR_R: impossible to copy to user space")
+	}
+	
+	printk(KERN_ALERT "Succesfully read: data %s", ker_buf);
+	
+	return 0;
+}
+
+static ssize_t dev_write
+(
+	struct file *fp,
+	const char *user_buf,
+	size_t len,
+	loff_t *off
+)
+{
+	uint8_t err = 0U;
+
+	printk(KERN_ALERT "device starting to read");
+
+	if((*off % 4) != 0 || *off > 16)
+	{
+		printk(KERN_INFO"Offset out of range\n");
+		return -1;
+	}
+	
+
+	err = copy_from_user(&local_buf, user_buf, sizeof(local_buf));
+	if (err != 0U)
+	{
+		printk(KERN_ALERT "ERROR_W: impossible to copy from user space")
+	}
+	
+	DEST_ADDR(vi_baddr + *off) = *(*uint8_t)user_buf;
+
+	printk(KERN_ALERT "Succesfully write: data %s", local_buf);
+	
+	return 0;
+}
+
+static int dev_close(struct inode *inod, struct file *fil){
+	printk(KERN_ALERT "device closed\n");
+	return 0;
+}
+
 
 static irqreturn_t aes_core_driver_irq(int irq, void *lp)
 {
@@ -286,19 +351,6 @@ static struct platform_driver aes_core_driver_driver = {
 	.remove		= aes_core_driver_remove,
 };
 
-static int __init aes_core_driver_init(void)
-{
-	printk("<1>Hello module world.\n");
-	printk("<1>Module parameters were (0x%08x) and \"%s\"\n", myint,
-	       mystr);
-
-	
-	vi_baddr = ioremap(BASE_ADDR, 0xFFFFU);
-
-	printk("virtual baddr mapped\n");
-
-	return platform_driver_register(&aes_core_driver_driver);
-}
 
 
 static void __exit aes_core_driver_exit(void)
@@ -312,91 +364,5 @@ static int dev_open(struct inode *inod, struct file *fil){
 	return 0;
 }
 
-
-static ssize_t dev_read
-(
-	struct file *fil, 
-	char *buf, 
-	size_t len, 
-	loff_t *off
-)
-{
-	uint8_t err = 0U;
-
-	printk(KERN_ALERT "device starting to read");
-
-	local_buf = *(uint8_t*)DEST_ADDR(vi_baddr + *off);
-	
-	err = copy_to_user(buf, &local_buf, sizeof(buf));
-	if (err != 0U)
-	{
-		printk(KERN_ALERT "ERROR_R: impossible to copy to user space")
-	}
-	
-	printk(KERN_ALERT "Succesfully read: data %s", ker_buf);
-	
-	return 0;
-}
-
-static ssize_t dev_write
-(
-	struct file *fp,
-	const char *user_buf,
-	size_t len,
-	loff_t *off
-)
-{
-	uint8_t err = 0U;
-
-	printk(KERN_ALERT "device starting to read");
-
-	if((*off % 4) != 0 || *off > 16)
-	{
-		printk(KERN_INFO"Offset out of range\n");
-		return -1;
-	}
-	
-
-	err = copy_from_user(&local_buf, user_buf, sizeof(local_buf));
-	if (err != 0U)
-	{
-		printk(KERN_ALERT "ERROR_W: impossible to copy from user space")
-	}
-	
-	DEST_ADDR(vi_baddr + *off) = *(*uint8_t)user_buf;
-
-	printk(KERN_ALERT "Succesfully write: data %s", local_buf);
-	
-	return 0;
-}
-
-static int dev_close(struct inode *inod, struct file *fil){
-	printk(KERN_ALERT "device closed\n");
-	return 0;
-}
-
-//static int write_input(const char* in, int offset)
-//{
-//
-//	//write inputs to the input register
-//	copy_from_user(ker_buf, in, 4);	
-//	*(vi_baddr + offset) = ker_buf;
-//	printk("input received %d", ker_buf);
-//
-//	return 0;
-//
-//}
-//
-//
-//static int read_result(int offset)
-//{
-//
-//	//read the result of the encrypted input
-//	sprintf(ker_buf, "%d\n", vi_baddr+offset);
-//	copy_to_user(result, ker_buf, 4);
-//	printk("result of encryption %d", ker_buf);
-//	return result;
-//
-//}
 module_init(aes_core_driver_init);
 module_exit(aes_core_driver_exit);
