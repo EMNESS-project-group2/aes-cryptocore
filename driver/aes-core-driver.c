@@ -173,7 +173,7 @@ static ssize_t dev_write
 		printk(KERN_ALERT "ERROR_W: impossible to copy from user space")
 	}
 	
-	DEST_ADDR(vi_baddr + *off) = *(*uint8_t)user_buf;
+	*DEST_ADDR(vi_baddr + *off) = *(*uint8_t)user_buf;
 
 	printk(KERN_ALERT "Succesfully write: data %s", local_buf);
 	

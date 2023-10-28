@@ -85,6 +85,7 @@ int main(int argc, char **argv)
     key[3]   = 0x0C0D0E0FU;
 
     test_maker (&fd, &state, &key);
+    printf("Expected Output : 69c4e0d86a7b0430d8cdb78070b4c55a\n\n");
 
     printf("*****************************************\n");
     printf("*               TEST 2\n")
@@ -101,6 +102,7 @@ int main(int argc, char **argv)
     key[3]   = 0xe0370734U;
 
     test_maker (&fd, &state, &key);
+    printf("Expected Output : 3925841d02dc09fbdc118597196a0b32\n\n");
 
     printf("*****************************************\n");
     printf("*               TEST 3\n")
@@ -117,6 +119,7 @@ int main(int argc, char **argv)
     key[3]   = 0x00000000U;
 
     test_maker (&fd, &state, &key);
+    printf("Expected Output : 66e94bd4ef8a2c3b884cfa59ca342b2e\n\n");
 
     printf("*****************************************\n");
     printf("*               TEST 4\n")
@@ -133,6 +136,7 @@ int main(int argc, char **argv)
     key[3]   = 0x00000001U;
 
     test_maker (&fd, &state, &key);
+    printf("Expected Output : 0545aad56da2a97c3663d1432a3d1c84\n\n");
 
 
 
@@ -154,8 +158,8 @@ static void test_maker
 
     for (int i = 0; i < 4; i++)
     {
-        key[i]   = *(key_f + i);
-        state[i] = *(state_f + i);
+        key[i]   = *(key_f + 4*i);
+        state[i] = *(state_f + 4*i);
     }
 
     /* Writing state value */
@@ -180,9 +184,8 @@ static void test_maker
     pread (fd, &out[3], sizeof(uint32_t), (off_t)OFFSET_OUTPUT_3);
 
 
-    printf("State value     : %08x%08X%08X%08X\n");
-    printf("Key value       : %08x%08X%08X%08X\n");
-    printf("Output value    : %08x%08X%08X%08X\n");
-    printf("Expected Output : %08x%08X%08X%08X\n");
+    printf("State value     : %08x%08X%08X%08X\n", state[0], state[1], state[2], state[3]);
+    printf("Key value       : %08x%08X%08X%08X\n", key[0], key[1], key[2], key[3]);
+    printf("Output value    : %08x%08X%08X%08X\n", out[0], out[1], out[2], out[3] );
 
 }
