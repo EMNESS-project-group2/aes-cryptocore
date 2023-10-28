@@ -1,4 +1,4 @@
-# PYNQ-Z2 Linux Installation Guide: NOT SURE OF THE LAST SECTION
+# PYNQ-Z2 Linux Installation Guide: NOT SURE OF THE LAST SECTIONfd
 
 ## Installing PetaLinux
 
