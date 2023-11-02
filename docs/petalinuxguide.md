@@ -187,7 +187,7 @@ You have already mounted the devices in you pc. If you don't know where the moun
    2. image.ub
    3. boot.scr
 2. Exctract the rootfs.tar.gz folder into the RootFS folder
-```bash
+```bash22
 cd $(YourMountedLocation)/RootFS/
 
 tar -xzvf $(PETAPROJECT)/images/linux/rootfs.tar.gz
