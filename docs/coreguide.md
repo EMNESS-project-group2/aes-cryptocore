@@ -36,7 +36,7 @@ The core will be instantiated using these files as a component. <br>
 
 For interfacing properly the core through the AXI4 interface, it has to be instantiated and the ports have to be connected to the signals of the AXI4 that can be used as input/output. It can be done by writing HDL code into the verilog file of the IP (the file which name terminates with `...SOO_AXI.vhd/.v`)
 
-![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-10-11%2018-32-43.png)
+![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/media/Screenshot%20from%202023-10-11%2018-32-43.png)
 
 After having made the proper connections, click on `Open elaborated design`. This option will automatically allocate our core inside the interface in the way defined in the IP. 
 
@@ -45,11 +45,11 @@ Now the schematics of the elaborated design are available.
 It's important to verify from the schematics that all the connections have correctly been implemented, especially where there is a parallelism higher than 32 bits and so the data has to be managed using registers in parallel.
 
 
-![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-29%2018-48-22.png)
+![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/media/Screenshot%20from%202023-09-29%2018-48-22.png)
 
-![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2015-58-35.png)
+![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/media/Screenshot%20from%202023-09-30%2015-58-35.png)
 
-![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/Screenshot%20from%202023-09-30%2016-50-48.png)
+![](https://github.com/emness-gr2/aes-cryptocore-driver/blob/main/docs/media/Screenshot%20from%202023-09-30%2016-50-48.png)
 
 ### Review, package, block design, wrapper
 
