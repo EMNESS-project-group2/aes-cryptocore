@@ -1,6 +1,6 @@
-## CONNECT THE BOARD IN LINUX
+# CONNECT THE BOARD IN LINUX
 
-#### Board package on Vivado
+## Board package on Vivado
 
 In order to work on the Pynq-Z2, download from there the board files:
 
@@ -14,7 +14,7 @@ https://www.tulembedded.com/FPGA/ProductsPYNQ-Z2.html#:~:text=Z2%20Board%20File
 
 -From VIVADO open Flow -> Hardware manager -> Autoconnect (You should be able to see the board connected)
 
-#### Install the Xilinx Cable Drivers
+## Install the Xilinx Cable Drivers
 
 For installing the cable drivers in order to connect the board to the computer on a linux distribution, you will need vivado. Run the following command
 
