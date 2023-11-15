@@ -1,6 +1,6 @@
 # PYNQ-Z2 Linux Installation Guide
 
-#### How to install PetaLinux
+## How to install PetaLinux
 
 1. **Download PetaLinux:**
    - Visit the following link to download the PetaLinux installer:
@@ -37,7 +37,7 @@ You can go at that [link](https://support.xilinx.com/s/article/73296?language=en
 - Run the settings.sh script `source ./settings.sh` (ignore the warning)
 
 
-#### Create the project
+## Create the project
 1. Go to your terminal and change directory to where you would like to create your new PetaLinux project directory 
 2. Run:
 
@@ -51,7 +51,7 @@ Here '-t' is equivalent to '--type'. You can see that there is a new folder crea
 cd aes-petalinux
 ```
 
-#### Configure using XSA file
+## Configure using XSA file
 
 You have previously created a XSA file as output of VIVADO that describes you hardware platform, which includes the instantiation of the ARM® Cortex™-A9 and the Crypto-core. You will need this file now for configure petalinux build and tell to petalinux what devices are available for it and it will create a Device Tree based on this hw definition file.
 
@@ -66,7 +66,7 @@ This will open the first configuration screen of the petalinux tool. In this you
 You can exit by pressing double time the <ESC>. Save it.
 This can needs some time.
 
-#### Configure the Kernel
+## Configure the Kernel
 
 Now we will configure the kernel. Hit the following command inside the project directory
 
@@ -75,7 +75,7 @@ petalinux-config -c kernel
 ```
 This will need some time. After that, a similar window to the previous one should open. As before, there are many options, you can browser it for checking if you have to change something. Also here, there is no need to change anything for the purpose of this Lab.
 
-#### Configure U-boot
+## Configure U-boot
 
 Another configuration command we have to run
 
@@ -88,7 +88,7 @@ Save and exit.
 
 Now there will be another configuration command needed, the one for the RootFS. But first, in order to compile it correctly for this lab, you want to create an application and a module.
 
-#### Creating and Compiling the driver
+## Creating and Compiling the driver
 The main goal of this LAB is to write a crypto-core driver in C language. Now, you can do it from scratch and try to cross-compile this driver for the system that you are building. This is not easy. Fortunately, Petalinux comes to help us. Indeed, in order to cross-compile the driver for the cripto-core easily, we will use the petalinux's recipes and buildtools. The skeleton of the driver that will contain your custom code can be created by terminal with this command.
 
 ```bash
@@ -109,7 +109,7 @@ petalinux-build -c aes-core-driver
 
 Thanks to that command and to nexts that we will see, the driver will be already mounted on the device (i.e. the *.ko file).
 
-#### Creating and Compiling the test driver
+## Creating and Compiling the test driver
 
 You can also create an application that tests your driver using the petalinux tools and avoiding also here to crosscompile it by yourself. 
 
@@ -128,14 +128,14 @@ Once you are done you can build it with petalinux
 ```bash
 petalinux-build -c aes-core-test
 ```
-#### Build the images
+## Build the images
 
 If everything works, you can build the images by giving as input the hw_platform you have created before
 
 ```bash
 petalinux-package --boot --fsbl $(PETAPROJECT)/images/linux/zynq_fsbl.elf --fpga $(VIVADO-HW-PATH)/hw_platform_300923/hw_platform/hw_platform.runs/impl_1/hw_platform_wrapper.bit --uboot --force
 ```
-#### Configure the Rootfs
+## Configure the Rootfs
 The final configuration command will be.
 
 ```bash
@@ -147,7 +147,7 @@ Same for the test.
 
 Save and exit.
 
-#### Build the project
+## Build the project
 
 Finally, you can build everything
 
