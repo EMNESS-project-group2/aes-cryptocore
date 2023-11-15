@@ -144,12 +144,42 @@ Be sure to have included libraries:
 ```
 <br>
 
+
 Now we can use the `_mWriteReg` and `_mReadReg` methods to properly write and read data to/from the core. <br>
 
 <br>
 
-Once finished, we can click on the `build` icon (the one with the hammer on it, on the top bar)
+Once finished, we can click on the `build` icon: 
+<br>
+<img width="30" src="https://github.com/emness-gr2/aes-cryptocore-driver/assets/68472618/40159452-06d4-4501-8abb-37dc13bc04a0">
+<br>
+on the upper toolbar
 
+| ⚠️ Important                               | 
+|------------------------------------------|
+| From now on, the board should be properly connected to the PC. <br> Check if the jumper that allows to choose between JTAG and SD is in the correct position. <br> 
+Verify the correct behavior from the status LED on the board. |
+
+
+The next step is to click on this icon:
+<br>
+<img width="30" src="https://github.com/emness-gr2/aes-cryptocore-driver/assets/68472618/5f1fc5b5-3f98-4970-b8af-94a2e8a878c0">
+<br>
+in the upper toolbar.
+<br>
+<br>
+This opens the menu `Target connections`, then in `Hardware Server` section you can click on `Local [default]`
+In the window that wil appear, click on `OK` with default values. 
+<br>
+<br>
+Now click on the `Debug` key on the upper toolbar:
+<br>
+<img width="30" src="https://github.com/emness-gr2/aes-cryptocore-driver/assets/68472618/a5835ffb-43a6-42c0-83e6-688f2c6a3aee">
+<br>
+This will program the FPGA and allow you to use the `Vitis Serial Terminal` (in the lower part of the screen), and add the correct port by clicking on the `+` symbol.
+<br>
+<br>
+With the serial terminal, you can verify the output from the board, and see if it's the correct response to the data applied through the C program.
 
 # 3. Embedded Linux Installation Guide
 
