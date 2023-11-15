@@ -1,6 +1,6 @@
-# PYNQ-Z2 Linux Installation Guide: NOT SURE OF THE LAST SECTION
+# PYNQ-Z2 Linux Installation Guide
 
-## Installing PetaLinux
+#### How to install PetaLinux
 
 1. **Download PetaLinux:**
    - Visit the following link to download the PetaLinux installer:
@@ -24,151 +24,137 @@ After:
   bash petalinux-v2023.1-05012318-installer.run
 ```
 
-- If an Error comes out saying you are missing some packages, run the following command:
+- If an Error comes out saying you are missing some dependencies, run the following command:
 ```bash
   sudo apt install gawk zlib1g-dev net-tools xterm autoconf libtool texinfo gcc-multilib 
 ```
-Maybe they aren't all the packages missing. If is that the case, check the error messages and search on google how to download that specific library by terminal. You will easily find a command to do it.
+Maybe they aren't all the packages and dependencies missing. 
+
+You can go at that [link](https://support.xilinx.com/s/article/73296?language=en_US ). By scrolling down, you can see a script called "plnx-evn-setup.sh". Download that script and run it. It should install **all** the packages needed. If is that not the case, check the error messages and search on google how to download that specific library by terminal. You will easily find a command to do it.
 
 - Follow the on-screen prompts to accept the license agreements and complete the installation.
 
 - Run the settings.sh script `source ./settings.sh` (ignore the warning)
 
-## Generating BSP Files and Linux Kernel
 
-BSP (Board Support Package) files are essential configurations and software components that enable an operating system, such as Linux, to run on a specific hardware platform, like the PYNQ-Z2 SoC. These files include device drivers, hardware initialization code, and settings specific to the target board.
-Since our board vendor does not provide BSP files, you can use PetaLinux to generate them and configure your Linux system. After generating the BSP files, you have two options:
-
-1. **Using a Precompiled Image (Easier):**
-   - Visit the [PYNQ-Z2 board manufacturer's website](http://www.pynq.io/board.html).
-   - Download the precompiled Linux image provided by the manufacturer.
-   - Put the image inside the SD card
-
-2. **Creating a PetaLinux Project from Scratch (Full Control):**
-   -  Create a PetaLinux project from scratch to build the entire Linux system, including the kernel, device tree, and root filesystem, customized for our hardware. This approach provides full control and customization but requires more setup and configuration compared to using a precompiled image.
-
-
-Since its a specification of the project, we  will create the project from scratch. We found the git repository of Xilinx which has all the needed files and scripts to generate the required BSP which we will then be used on PetaLinux.
-**Creating BSP and creating the PetaLinux project**
-1. Clone the pynq project repo to your PC:
-   ```bash
-     git clone git@github.com:Xilinx/PYNQ.git
-2. Launch the vivado script for env variables
-
-   ```bash
-   source ${Vivado_installation_directory}/settings.sh
-   ```
-3. Go to the `base` directory:
-   ```bash
-   cd PYNQ/boards/Pynq-Z2/base/
-   ```
-4. Open the `base.tcl` script and change `scripts_vivado_version` variable to your Vivado version, for us it was 2022.2
-5. Run `make` and wait until you get the message "build finished succesfully", go grab a coffee in the meanwhile, it takes some time.
-
-
-
-We have to write here how we created the BSP using petaLinux
-
-After, creating a new project from a BSP is the simplest way to get started with PetaLinux, since it provides you with an already functioning and bootable Linux image that you start playing with.
-1. Go to your terminal and change directory to where you would like to create your new PetaLinux project directory and enter the following command.
+#### Create the project
+1. Go to your terminal and change directory to where you would like to create your new PetaLinux project directory 
 2. Run:
 
 ```bash
-petalinux-create -t project -s <bsp_path> --name 
-OperatingSystemProject
+petalinux-create -t project --template zynq --name aes-petalinux
 ```
 
-Here '-t' is equivalent to '--type' and '-s' is for source (has to be followed by the absolute path to the BSP we just created in the previous step). (i.e home/ric/PYNQ-Z2/pynq_z2.bsp).
+Here '-t' is equivalent to '--type'. You can see that there is a new folder created and you can enter inside it.
 
-1. Move to the newly created directory:
 ```bash
-cd OperatingSystemProject
+cd aes-petalinux
 ```
 
-1. This step is very straight forward from an end user's perspective, but will require you to accept a bit of 'magic' in the background if you are not intimately familiar with the process of compiling a Linux image from scratch. After this step, you will have a kernel, file system, first stage and second stage boot loaders, and device tree compiled and ready to be deployed to your PYNQ-Z2.
+#### Configure using XSA file
+
+You have previously created a XSA file as output of VIVADO that describes you hardware platform, which includes the instantiation of the ARM® Cortex™-A9 and the Crypto-core. You will need this file now for configure petalinux build and tell to petalinux what devices are available for it and it will create a Device Tree based on this hw definition file.
+
+Write this command into the project directory
 
 ```bash
 petalinux-config --get-hw-description <PATH-TO-XSA DIRECTORY>
 ```
-The petalinux-config --get-hw-description command allows you to initialize or update a PetaLinux project with hardware-specific information from the specified Vivado hardware project.
 
-TCL, make, tcpdamp,gcc runtime, buildesential, petalinux packages groups (check link), ssh, vitis accelereation essentials, empy root pswd,  (STEP5)
+This will open the first configuration screen of the petalinux tool. In this you can navigate and check what is inside, but there is no need to change anything here.
 
-STEP6: RUN COMMAND
-STEP7: USB SUPPORT AS TUTORIAL
-STEP8: build
- 
-....
-...
-..
-tutte cose
-...
-...
+You can exit by pressing double time the <ESC>. Save it.
+This can needs some time.
 
+#### Configure the Kernel
 
- ```bash
- petalinux-build
- ```
+Now we will configure the kernel. Hit the following command inside the project directory
 
-## Creating and Compiling the driver
+```bash
+petalinux-config -c kernel
+```
+This will need some time. After that, a similar window to the previous one should open. As before, there are many options, you can browser it for checking if you have to change something. Also here, there is no need to change anything for the purpose of this Lab.
 
-In order to cross-compile the driver for the cripto-core easily, we will use the petalinux's recipes and buildtools. The skeleton of the driver that will contain your custom code can be created by terminal
+#### Configure U-boot
+
+Another configuration command we have to run
+
+```bash
+petalinux-config -c u-boot
+```
+In the configuration window, you have to enable the boot options --> boot media --> "Support for booting from QSPI flash" and "Support for booting from SD/EMMC"
+
+Save and exit.
+
+Now there will be another configuration command needed, the one for the RootFS. But first, in order to compile it correctly for this lab, you want to create an application and a module.
+
+#### Creating and Compiling the driver
+The main goal of this LAB is to write a crypto-core driver in C language. Now, you can do it from scratch and try to cross-compile this driver for the system that you are building. This is not easy. Fortunately, Petalinux comes to help us. Indeed, in order to cross-compile the driver for the cripto-core easily, we will use the petalinux's recipes and buildtools. The skeleton of the driver that will contain your custom code can be created by terminal with this command.
 
 ```bash
 petalinux-create -t modules --name aes-core-driver --enable
 ```
-There you can customize the init, write, read, open, close functions to your needs. The file is in
-
+You can check that a new file it is created. The file is in
 
 ```bash
 $(PETAPROJECT)/project-spec/meta-user/recipes-modules/aes-core-driver/files/aes-core-driver.c
 ```
+There you can customize the init, write, read, open, close functions to your needs.
 
-Once you are done you can build it with petalinux
+Once you are done you can build it with petalinux (cross-compile it)
 
 ```bash
 petalinux-build -c aes-core-driver
 ```
 
-You can also create an application that tests your driver. 
+Thanks to that command and to nexts that we will see, the driver will be already mounted on the device (i.e. the *.ko file).
+
+#### Creating and Compiling the test driver
+
+You can also create an application that tests your driver using the petalinux tools and avoiding also here to crosscompile it by yourself. 
 
 ```bash
 petalinux-create -t apps --template c --name aes-core-test --enable
 ```
 
-There you can customize the C file to your testing needs. The file is in
-
+The new file created is in
 
 ```bash
 $(PETAPROJECT)/project-spec/meta-user/recipes-apps/aes-core-test/files/aes-core-test.c
 ```
+There you can customize the C file to your testing needs. 
 Once you are done you can build it with petalinux
 
 ```bash
 petalinux-build -c aes-core-test
 ```
+#### Build the images
 
 If everything works, you can build the images by giving as input the hw_platform you have created before
 
 ```bash
 petalinux-package --boot --fsbl $(PETAPROJECT)/images/linux/zynq_fsbl.elf --fpga $(VIVADO-HW-PATH)/hw_platform_300923/hw_platform/hw_platform.runs/impl_1/hw_platform_wrapper.bit --uboot --force
 ```
-
-Enable the driver and the test in the configuration
+#### Configure the Rootfs
+The final configuration command will be.
 
 ```bash
 petalinux-config -c rootfs
-
-# Go to user packages -> aes-core-driver and enable it
 ```
+Here you can add your custom applications by going to user packages -> aes-core-driver and enable it
 
+Same for the test.
 
-Finally
+Save and exit.
+
+#### Build the project
+
+Finally, you can build everything
 
 ```bash
 petalinux-build
 ```
-
+This will need time to complete.
 
 ## Booting from SD
 
@@ -187,7 +173,8 @@ You have already mounted the devices in you pc. If you don't know where the moun
    2. image.ub
    3. boot.scr
 2. Exctract the rootfs.tar.gz folder into the RootFS folder
-```bash22
+
+```bash
 cd $(YourMountedLocation)/RootFS/
 
 tar -xzvf $(PETAPROJECT)/images/linux/rootfs.tar.gz

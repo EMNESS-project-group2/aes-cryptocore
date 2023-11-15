@@ -1,4 +1,4 @@
-# How to set the core on the Pynq-Z2 board
+# Set up the HW platform
 
 #### Copyright
 Licensed under CC-BY-4.0
