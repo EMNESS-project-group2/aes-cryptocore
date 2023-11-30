@@ -1,0 +1,5 @@
+petalinux-build -c aes-core-driver
+petalinux-build -c test-driver
+cd ~/cacca
+sudo rm -r *
+tar -xzvf /home/riccardo/petalinux/aes_linux/images/linux/rootfs.tar.gz

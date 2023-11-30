@@ -187,8 +187,10 @@ With the serial terminal, you can verify the output from the board, and see if i
 
 1. **Download PetaLinux:**
    - Visit the following link to download the PetaLinux installer:
-     [PetaLinux Download](https://www.xilinx.com/member/forms/download/xef.html?filename=petalinux-v2023.1-05012318-installer.run)
+     [PetaLinux Download](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 
+    Install the same version as your vivado suite. Otherwise, the file xsa will not be accepted.
+    
 2. **Installation Steps:**
 
 First of all, make sure you have the latest version of the OS.
