@@ -190,7 +190,8 @@ With the serial terminal, you can verify the output from the board, and see if i
      [PetaLinux Download](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 
     Install the same version as your vivado suite. Otherwise, the file xsa will not be accepted.
-    
+
+
 2. **Installation Steps:**
 
 First of all, make sure you have the latest version of the OS.
