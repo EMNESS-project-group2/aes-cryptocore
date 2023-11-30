@@ -50,7 +50,7 @@
 #define OFFSET_OUTPUT_2 	(0x00000028U)
 #define OFFSET_OUTPUT_3 	(0x0000002CU)
 
-#define DEST_ADDR(x,y)      (uint8_t*)((uint8_t)(x) + (uint8_t)(y))
+#define DEST_ADDR(x,y)      (void __iomem*)((size_t)(x) + (size_t)(y))
 
 /* Standard module information, edit as appropriate */
 MODULE_LICENSE("GPL");
@@ -72,8 +72,9 @@ static struct device *ourdev;
 
 
 /** ptrs to the I/O regs */
-static uint32_t local_buf   = 0U;
-static uint8_t *vi_baddr   = NULL;
+static uint32_t local_buf       = 0U;
+static void __iomem *vi_baddr   = NULL;
+static uint32_t* baddrloc 		= NULL;
 
 
 
@@ -205,10 +206,12 @@ static int aes_core_driver_probe(struct platform_device *pdev)
 	/* Get IRQ for the device */
 	r_irq = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
 	if (!r_irq) {
+		vi_baddr = lp->base_addr;  
 		dev_info(dev, "no IRQ found\n");
-		dev_info(dev, "aes-core-driver at 0x%08x mapped to 0x%08x\n",
+		dev_info(dev, "aes-core-driver at 0x%08x mapped to 0x%08x and local is: 0x%08x \n",
 			(unsigned int __force)lp->mem_start,
-			(unsigned int __force)lp->base_addr);
+			(unsigned int __force)lp->base_addr,
+			(unsigned int __force)vi_baddr);
 		
 		return 0;
 	}
@@ -220,17 +223,9 @@ static int aes_core_driver_probe(struct platform_device *pdev)
 		goto error3;
 	}
 
-	vi_baddr = ioremap(BASE_ADDR, 0xFFU);
-	   
-	if (*(vi_baddr) != NULL)
-	{
+	//vi_baddr = ioremap(BASE_ADDR, 0xFFU);
+	//vi_baddr = lp->base_addr;  
 
-		printk("Virtual base address mapped !!!!! aho\n");
-	}
-	else
-	{
-		printk("Non ha mappato");
-	}
 
 	dev_info(dev,"aes-core-driver at 0x%08x mapped to 0x%08x, irq=%d\n",
 		(unsigned int __force)lp->mem_start,
@@ -289,6 +284,10 @@ static int __init aes_core_driver_init(void)
 	       mystr);
 
 	
+	baddrloc = ioremap(BASE_ADDR, 0xFFU);
+
+	printk("<1>The local ioremap baddrloc stores: (0x%x)\n", baddrloc);
+	printk("<1>The vi_baddr stores: (0x%x)\n", (uint32_t*)vi_baddr);
 
 
 	return platform_driver_register(&aes_core_driver_driver);
@@ -297,19 +296,21 @@ static int __init aes_core_driver_init(void)
 
 static ssize_t dev_read
 (
-	struct file *fil, 
+	struct file *fp, 
 	char *buf, 
 	size_t len, 
 	loff_t *off
 )
 {
+	struct aes_core_driver_local *lp = dev_get_drvdata(fp->f_inode->i_private);
+	uint32_t *baddr = lp->base_addr;
+	uint32_t *addr = DEST_ADDR(baddr, *off);
 	uint8_t err = 0U;
 
 	printk(KERN_ALERT "Device starting to read");
-
-	local_buf = readl(DEST_ADDR(vi_baddr, *off));
+	uint32_t value = readl(addr);
 	
-	err = copy_to_user(buf, &local_buf, sizeof(buf));
+	err = copy_to_user(buf, &value, sizeof(value));
 	if (err != 0U)
 	{
 		printk(KERN_ALERT "ERROR_R: impossible to copy to user space");
@@ -317,7 +318,9 @@ static ssize_t dev_read
 	
 	printk(KERN_ALERT "Succesfully read: data %0X", local_buf);
 	
-	return 0;
+
+  	return 0;
+
 }
 
 static ssize_t dev_write
@@ -331,25 +334,31 @@ static ssize_t dev_write
 	uint8_t  err        = 0U;
 	
 
-	printk(KERN_ALERT "device starting to write");
-	printk(KERN_ALERT "Write function.\nVirtual address = %08X\n local_buf = %08X\n", *vi_baddr, local_buf);
-	printk(KERN_ALERT "user_buf = %08X\n", *user_buf);
+	//printk(KERN_ALERT "device starting to write");
+	//printk(KERN_ALERT "Write function.\nVirtual address = %08X\n local_buf = %08X\n", vi_baddr, local_buf);
+	//printk(KERN_ALERT "user_buf = %08X\n", *user_buf);
+	struct aes_core_driver_local *lp = dev_get_drvdata(fp->f_inode->i_private);
+  	uint32_t *baddr = lp->base_addr;
 
+  	// Determine the address to write to based on the offset
+  	uint32_t *addr = DEST_ADDR(baddr, *off);
 
-	if((*off % 4) != 0 || *off > 16)
-	{
-		printk(KERN_INFO"Offset out of range\n");
-		return -1;
-	}
+	  // Verify that the length of data to write is equal to the size of the register
+  	if (len != sizeof(uint32_t)) {
+  	  return -EINVAL;
+  	}
 
-	err = copy_from_user(&local_buf, user_buf, sizeof(user_buf));
+	uint32_t value;
+	err = copy_from_user(&value, user_buf, len);
 	if (err != 0U)
 	{
 		printk(KERN_ALERT "ERROR_W: impossible to copy from user space");
 	}
 	
 	
-	writel(local_buf,DEST_ADDR(vi_baddr,*off));
+	//writel(local_buf,DEST_ADDR(vi_baddr,*off));
+
+	writel(value,addr);
 
 	printk(KERN_ALERT "Succesfully write: data %s", local_buf);
 	
@@ -371,7 +380,7 @@ static void __exit aes_core_driver_exit(void)
 static int dev_open(struct inode *inod, struct file *fil){
 	printk(KERN_ALERT "device opened");
 
-	printk(KERN_ALERT "Open function.\nVirtual address = %08X\n local_buf = %08X\n", *vi_baddr, local_buf);
+	//printk(KERN_ALERT "Open function.\nVirtual address = %08X\n local_buf = %08X\n", vi_baddr, local_buf);
 	return 0;
 }
 

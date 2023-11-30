@@ -92,7 +92,7 @@ int main(int argc, char **argv)
     //}
 
     /* Writing state value */
-    printf("sto prima delle write \n");
+    
     pwrite (fd, &state[0], sizeof(uint32_t), (off_t)OFFSET_STATE_0);
     pwrite (fd, &state[1], sizeof(uint32_t), (off_t)OFFSET_STATE_1);
     pwrite (fd, &state[2], sizeof(uint32_t), (off_t)OFFSET_STATE_2);
