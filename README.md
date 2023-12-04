@@ -257,7 +257,7 @@ Now we will configure the kernel. Hit the following command inside the project d
 ```bash
 petalinux-config -c kernel
 ```
-This will need some time. After that, a similar window to the previous one should open. As before, there are many options, you can browser it for checking if you have to change something. Also here, there is no need to change anything for the purpose of this Lab.
+This will need some time. After that, a similar window to the previous one should open. As before, there are many options, you can browse it for checking if you have to change something. Also here, there is no need to change anything for the purpose of this Lab.
 
 ## Configure U-boot
 
