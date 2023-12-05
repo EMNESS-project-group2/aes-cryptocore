@@ -14,9 +14,10 @@ Licensed under CC-BY-4.0
 Here is the explanation of each directory in the repo.
 
 - **docs** . Here you can find the documents related to that lab experience:
-  - *connections* that explain how to connect the board to the computer and some solution to some problem that can arise during this phase
-  - *lab-exercises* that lists the exercises you have to do in order to complete the lab experience
-  - *gitguide* a short github guide if you want to do the lab experience with other people in a public repository
+  - *connections* It explains how to connect the board to the computer and some solution to some problem that can arise during this phase
+  - *lab-exercises* Lists the exercises you have to do in order to complete the lab experience
+  - *gitguide* Short github guide if you want to do the lab experience with other people in a public repository
+  - *presentation* Students aimed presentation in order to understand the workflow of the entire project 
 - **driver**. Here there are the solutions of the exercises assigned related to the driver development and the test on linux.
 - **tiny_aes** contains the crypto-core of OpenHW
 - **vitis** contains the solution to the exercise assigned related to the bare-metal test development. It contains the vitis zip project and a file c of the test.
