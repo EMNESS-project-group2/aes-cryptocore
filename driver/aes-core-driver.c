@@ -224,7 +224,7 @@ static int aes_core_driver_probe(struct platform_device *pdev)
 	}
 
 	//vi_baddr = ioremap(BASE_ADDR, 0xFFU);
-	//vi_baddr = lp->base_addr;  
+	vi_baddr = lp->base_addr;  
 
 
 	dev_info(dev,"aes-core-driver at 0x%08x mapped to 0x%08x, irq=%d\n",
@@ -302,9 +302,8 @@ static ssize_t dev_read
 	loff_t *off
 )
 {
-	struct aes_core_driver_local *lp = dev_get_drvdata(fp->f_inode->i_private);
-	uint32_t *baddr = lp->base_addr;
-	uint32_t *addr = DEST_ADDR(baddr, *off);
+
+	uint32_t *addr = DEST_ADDR(*vi_baddr, *off);
 	uint8_t err = 0U;
 
 	printk(KERN_ALERT "Device starting to read");
@@ -334,14 +333,8 @@ static ssize_t dev_write
 	uint8_t  err        = 0U;
 	
 
-	//printk(KERN_ALERT "device starting to write");
-	//printk(KERN_ALERT "Write function.\nVirtual address = %08X\n local_buf = %08X\n", vi_baddr, local_buf);
-	//printk(KERN_ALERT "user_buf = %08X\n", *user_buf);
-	struct aes_core_driver_local *lp = dev_get_drvdata(fp->f_inode->i_private);
-  	uint32_t *baddr = lp->base_addr;
-
   	// Determine the address to write to based on the offset
-  	uint32_t *addr = DEST_ADDR(baddr, *off);
+  	uint32_t *addr = DEST_ADDR(*vi_baddr, *off);
 
 	  // Verify that the length of data to write is equal to the size of the register
   	if (len != sizeof(uint32_t)) {
@@ -355,8 +348,6 @@ static ssize_t dev_write
 		printk(KERN_ALERT "ERROR_W: impossible to copy from user space");
 	}
 	
-	
-	//writel(local_buf,DEST_ADDR(vi_baddr,*off));
 
 	writel(value,addr);
 
@@ -379,8 +370,6 @@ static void __exit aes_core_driver_exit(void)
 
 static int dev_open(struct inode *inod, struct file *fil){
 	printk(KERN_ALERT "device opened");
-
-	//printk(KERN_ALERT "Open function.\nVirtual address = %08X\n local_buf = %08X\n", vi_baddr, local_buf);
 	return 0;
 }
 
